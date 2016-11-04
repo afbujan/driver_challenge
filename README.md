@@ -45,7 +45,7 @@ The steps needed to solve the problem are the following:
  - Finding the order of the reads in the complete sequence, which involves: 
     - Finding the left-most read (the one with no significant** overlap to the left) 
     - Recursively finding the read with significant overlap to the right of the subsequent read
- - Stiching all the reads together
+ - Stiching all the reads together once the order is known
 
 **significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if needed. In any case, the way the program is implemeted the threshold is fixed for all reads.
 
