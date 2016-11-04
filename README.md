@@ -47,7 +47,7 @@ The steps needed to solve the problem are the following:
     - Recursively finding the read with significant overlap to the right of the subsequent read
  - Stiching all the reads together once the order is known
 
-**significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if needed. In any case, the way the program is implemeted the threshold is fixed for all reads.
+**significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if needed. In the program, the threshold is fixed for all reads.
 
 Testing the program
 -------------------
@@ -70,7 +70,7 @@ python concatenate_reads_test.py --n 50 --l 1000
 
 If no parameters are given the default ones are used.
 
-The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task. Example output below:
+The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task. An example output is shown below:
 
 ```
 Testing with following parameters:
