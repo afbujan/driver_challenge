@@ -1,12 +1,12 @@
 Driver Group challenge
 =====================
 
-Solution to the Driver coding challenge
+Solution to the Driver Group coding challenge
 ---------------------------------------
 
 The solution to the challenge is a module called ```concatenate_reads.py```
 
-This python module can be run from the comman line by typing:
+This python module can be run from the command line by typing:
 
 ```
 python concatenate_reads.py --help
