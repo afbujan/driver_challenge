@@ -16,7 +16,7 @@ The command above will display the module's help info. You can concatenate reads
 python concatenate_reads.py -f path/to/your/file.fasta
 ``` 
 
-The output of the program will print the concatenated DNA sequence. The module can also be used within another module with the appropriate import statement:
+The output of the program will print the concatenated DNA sequence. The module can also be used within another module using the appropriate import statement:
 
 ```
 import concatenate_reads as cr
