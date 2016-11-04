@@ -13,7 +13,7 @@ python concatenate_reads.py --help
 The command above will display the module's help info. You can concatenate reads from a specific file by typing:
 
 ```
-python concatenate_reads.py -f path/to/your/file.fasta
+python concatenate_reads.py -f path/to/your/DNA_file.txt
 ``` 
 
 The output of the program will print the concatenated DNA sequence. The module can also be used within another module using the appropriate import statement:
