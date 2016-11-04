@@ -25,12 +25,23 @@ python concatenate_reads.py -f path/to/your/file.fasta
 The output of the program will print the concatenated DNA sequence.
 
 
-The module can also be used from another module by using the approprite import:
+The module can also be used from another module with the appropriate import:
 
 ```
 import concatenate_reads as cr
+reads = cr.loadReads(filename)
 concatenated_sequence = cr.getCompleteSequence(reads, threshold=3)
 ```
 
 That would return a string with the concatenated DNA sequence.
+
+
+How does the program work
+-------------------------
+
+First, this program assumes that there are no sequencing errors and that there
+are no reads nested within reads. 
+
+
+
 
