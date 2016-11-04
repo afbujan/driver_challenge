@@ -12,7 +12,7 @@ This python module can be run from the command line by typing:
 python concatenate_reads.py --help
 ``` 
 
-This command will display the module's help info.
+The command above will display the module's help info.
 
 You can concatenate reads from a specific file by typing:
 
@@ -71,4 +71,4 @@ python concatenate_reads_test.py --n 50 --l 1000
 
 If no parameters are given the default ones are used.
 
-The test module generates a series of overlapping reads and mixes them randomly. The output is then compared with the ground truth. 
+The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task.
