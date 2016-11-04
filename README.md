@@ -14,16 +14,13 @@ python concatenate_reads.py --help
 
 This command will display the module's help info.
 
-
 You can concatenate reads from a specific file by typing:
-
 
 ```
 python concatenate_reads.py -f path/to/your/file.fasta
 ``` 
 
 The output of the program will print the concatenated DNA sequence.
-
 
 The module can also be used from another module with the appropriate import:
 
@@ -33,7 +30,7 @@ reads = cr.loadReads(filename)
 concatenated_sequence = cr.getCompleteSequence(reads, threshold=3)
 ```
 
-That would return a string with the concatenated DNA sequence.
+These lines will return a string with the concatenated DNA sequence.
 
 
 How does the program work
@@ -58,3 +55,20 @@ Testing the program
 
 The program can be tested using the test module ```concatenate_reads_test.py```
 
+This module can be run from the command line by typing:
+
+```
+python concatenate_reads_test.py --help
+```
+
+This command will display the module's help info. There are 3 parameters that can be controlled: the number of reads, the length of the reads, and the length ratio overlapping/non-overlapping regions (called beta)
+
+To test the code you can type the following:
+
+```
+python concatenate_reads_test.py --n 50 --l 1000 
+```
+
+If no parameters are given the default ones are used.
+
+The test module generates a series of overlapping reads and mixes them randomly. The output is then compared with the ground truth. 
