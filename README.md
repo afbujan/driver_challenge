@@ -36,10 +36,9 @@ These lines will return a string with the concatenated DNA sequence.
 How does the program work
 -------------------------
 
-First, this program assumes that there are no sequencing errors and that there
-are no reads nested within reads.
+The program assumes that there are no sequencing errors and that there are no reads nested within reads.
 
-These are the steps needed to solve the problem: 
+The steps needed to solve the problem are the following: 
 
  - Loading the reads and storing them in a dictionary
  - Creating a matrix of overlap lengths, which contains the length of the overlap between all pairs of reads in both directions
