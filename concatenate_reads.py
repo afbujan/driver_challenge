@@ -132,7 +132,7 @@ def getOrder(idx, overlapLengths, threshold=300):
         return [idx]
     else:
         nextRead = np.argmax(overlapLengths[idx])
-        return [idx] + getOrder(nextRead, overlapLengths)
+        return [idx] + getOrder(nextRead, overlapLengths, threshold)
 
 def concatReads(order, reads, overlapLengths):
     """Returns a concatenated sequence of DNA reads
