@@ -42,13 +42,13 @@ are no reads nested within reads.
 These are the steps needed to solve the problem: 
 
  - Loading the reads and storing them in a dictionary
- - Creating a matrix of overlap lengths, which tells us the length of the overlap between all pairs of reads in both directions
+ - Creating a matrix of overlap lengths, which contains the length of the overlap between all pairs of reads in both directions
  - Finding the order of the reads in the complete sequence, which involves: 
     - Finding the left-most read (the one with no significant** overlap to the left) 
     - Recursively finding the reads to the right of the subsequent read
  - Stiching all the reads together
 
-**significant is in the program controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if wanted. In any case, the way the program is implemeted the threshold is fixed for all reads.
+**significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if needed. In any case, the way the program is implemeted the threshold is fixed for all reads.
 
 Testing the program
 -------------------
@@ -61,7 +61,7 @@ This module can be run from the command line by typing:
 python concatenate_reads_test.py --help
 ```
 
-This command will display the module's help info. There are 3 parameters that can be controlled: the number of reads, the length of the reads, and the length ratio overlapping/non-overlapping regions (called beta)
+The command above will display the module's help info. There are 3 parameters that can be controlled: the number of reads, the length of the reads, and the ratio between the length of the overlapping and the non-overlapping regions (called beta).
 
 To test the code you can type the following:
 
@@ -72,3 +72,11 @@ python concatenate_reads_test.py --n 50 --l 1000
 If no parameters are given the default ones are used.
 
 The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task.
+
+```
+Testing with following parameters:
+	*n_reads:     50
+	*read_length: 1000
+	*beta:        0.2
+Test passed:  True  elapsed time: 1.1814 seconds
+```
