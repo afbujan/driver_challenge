@@ -24,7 +24,7 @@ reads = cr.loadReads(filename)
 concatenated_sequence = cr.getCompleteSequence(reads, threshold=3)
 ```
 
-These lines will return a string with the concatenated DNA sequence.
+The lines above will store a string with the concatenated DNA sequence in the variable ```concatenated_sequence```.
 
 
 How the program works
@@ -53,7 +53,7 @@ python concatenate_reads_test.py --help
 The command above will display the module's help info. There are 3 parameters that can be controlled: the number of reads, the length of the reads, and the ratio between the length of the overlapping and non-overlapping regions (called beta). To test the code you can type the following:
 
 ```
-python concatenate_reads_test.py --n 50 --l 1000 
+python concatenate_reads_test.py -n 50 -l 1000 
 ```
 
 If no parameters are given the default ones are used. The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task. An example output is shown below:
