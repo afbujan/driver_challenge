@@ -8,19 +8,24 @@ def main():
     parser = OptionParser(usage)
     parser.add_option("-f",'--file_path',type="string",default='',\
         help="path to the DNA file to be concatenated.")
+    parser.add_option("-t","--threshold",type="int",default=300,\
+        help="min number of bases that make an overlap region significant")
     (options, args) = parser.parse_args()
-    printConcatReads(options.file_path)
+    reads = loadReads(filename=options.file_path)
+    print '\nDNA file: %s'%options.file_path
+    printConcatReads(reads=reads,threshold=options.threshold)
 
-def printConcatReads(file_path):
+def printConcatReads(reads,threshold=300):
     """Returns the concatenate sequence of DNA reads
     Args:
-       file_path: path to the DNA file
+        threshold (int): number of bases that makes an overlap significant
+        reads (dict): a dictionary with the DNA reads
     """
-    reads = loadReads(file_path)
     overlapLengths = getOverlapLengths(reads)
-    order = getOrder(getLeftMostID(overlapLengths), overlapLengths)
-    print '\nFor file: %s'%file_path
-    print '\nThe complete DNA sequence is: [%s]'%concatReads(order, reads, overlapLengths)
+    
+    order = getOrder(getLeftMostID(overlapLengths, threshold=threshold), 
+                     overlapLengths, threshold=threshold)
+    print '\nComplete DNA sequence after concatenation: [%s]'%concatReads(order, reads, overlapLengths)
 
 def get_records(file_path, file_format='fasta'):
     """Loads a DNA file
@@ -49,24 +54,36 @@ def loadReads(filename, fileformat='fasta'):
         reads[str(i)]=''.join(r)
     return reads
 
-def getOverlap(seq_left, seq_right):
-    """Returns the overlapping section between 2 DNA seqs
+def getReadLength(reads):
+    """Returns the length of all the reads 
     Args:
-        seq_left (string): left sequence
-        seq_right (string): right sequence
+        reads (dict): a dictionary with the DNA reads
     Returns:
-        overlap (string): overlapping sequence
+        read_length (list): length of the DNA reads
+    """
+    read_length = []
+    for i in reads:
+        read_legth.append(len(reads[i]))
+    return read_length
+
+def getOverlap(left_read, right_read):
+    """Returns the overlapping section between 2 DNA reads
+    Args:
+        left_read (string): left DNA read
+        right_read (string): right DNA read
+    Returns:
+        overlap (string): overlapping DNA sequence
     """
     overlap = ''
-    seq_len = len(seq_left)
-    for i in xrange(seq_len):
-        if seq_left[i:] == seq_right[:seq_len-i]:
-            overlap = seq_left[i:]
+    read_length = len(left_read)
+    for i in xrange(read_length):
+        if left_read[i:] == right_read[:read_length-i]:
+            overlap = left_read[i:]
             break
     return overlap
 
 def getOverlapLengths(reads):
-    """Computes the length of all the overlaps between pairs of DNA seqs
+    """Computes the length of all the overlaps between pairs of DNA reads 
         from left-right (rows) and right-left (columns)
     Args:
         reads (dict): all the DNA reads to be compared
@@ -75,11 +92,11 @@ def getOverlapLengths(reads):
     """
     n_reads = len(reads)
     overlapLengths = np.zeros((n_reads, n_reads), dtype='int')
-    for i, s1 in enumerate(reads.values()):
-        for j, s2 in enumerate(reads.values()):
+    for i, r1 in reads.items():
+        for j, r2 in reads.items():
             if i==j:
                 continue
-            overlapLengths[i,j] = len(getOverlap(s1, s2))
+            overlapLengths[int(i),int(j)] = len(getOverlap(r1, r2))
     return overlapLengths
 
 def getLeftMostID(overlapLengths, threshold=300):
@@ -126,11 +143,10 @@ def concatReads(order, reads, overlapLengths):
     """ 
     completeSequence = ''
     for i in xrange(len(order)-1):
-        rightOverlap = overlapLengths[order[i],order[i+1]]
-        completeSequence += reads[str(order[i])][:-rightOverlap]
+        overlapLength = overlapLengths[order[i],order[i+1]]
+        completeSequence += reads[str(order[i])][:-overlapLength]
     completeSequence += reads[str(order[-1])]
     return completeSequence
-
 
 if __name__ == "__main__":
     main()
