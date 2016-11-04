@@ -1,6 +1,8 @@
-# driver_challenge
+Driver Group challenge
+=====================
 
 Solution to the Driver coding challenge
+---------------------------------------
 
 The solution to the challenge is a module called ```concatenate_reads.py```
 
