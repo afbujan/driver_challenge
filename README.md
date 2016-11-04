@@ -40,8 +40,13 @@ How does the program work
 -------------------------
 
 First, this program assumes that there are no sequencing errors and that there
-are no reads nested within reads. 
+are no reads nested within reads.
 
+These are the steps needed to solve the problem: 
+
+ - Loading the reads and storing it in a dictionary
+ - Creating a matrix of overlap lengths, which tells us the length of the overlap between all pairs of reads in both directions
+ - Find the order of the reads in the complete sequence, which involves finding the left-most read and recursively finding the reads to hte right of the subsequent read
 
 
 
