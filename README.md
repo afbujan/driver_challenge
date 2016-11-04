@@ -46,9 +46,15 @@ These are the steps needed to solve the problem:
 
  - Loading the reads and storing them in a dictionary
  - Creating a matrix of overlap lengths, which tells us the length of the overlap between all pairs of reads in both directions
- - Finding the order of the reads in the complete sequence, which involves: (1) finding the left-most read and (2) recursively finding the reads to the right of the subsequent read
+ - Finding the order of the reads in the complete sequence, which involves: 
+    - Finding the left-most read (the one with no significant** overlap to the left) 
+    - Recursively finding the reads to the right of the subsequent read
  - Stiching all the reads together
 
+**significant is in the program controlled by a threshold parameter. In general, an overlap larger than 3 base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set higher if wanted. In any case, the way the program is implemeted the threshold is fixed for all reads.
 
+Testing the program
+-------------------
 
+The program can be tested using the test module ```concatenate_reads_test.py```
 
