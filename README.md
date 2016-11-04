@@ -71,7 +71,7 @@ python concatenate_reads_test.py --n 50 --l 1000
 
 If no parameters are given the default ones are used.
 
-The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task. Example output bellow:
+The test module generates a series of overlapping reads and mixes them randomly. The output of ```concatenate_reads.py``` is then compared with the ground truth. The output of ```concatenate_reads_test.py``` will print to the screen whether the test passed, a list with the paramenters of the test, and the time it took for the algorithm to complete the task. Example output below:
 
 ```
 Testing with following parameters:
