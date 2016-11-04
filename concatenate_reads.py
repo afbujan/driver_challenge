@@ -27,7 +27,7 @@ def printConcatReads(reads,threshold=300):
                      overlapLengths, threshold=threshold)
     print '\nComplete DNA sequence after concatenation: [%s]'%concatReads(order, reads, overlapLengths)
 
-def get_records(file_path, file_format='fasta'):
+def getRecords(file_path, file_format='fasta'):
     """Loads a DNA file
     Args:
         file_path (string): path to the DNA file
@@ -40,14 +40,14 @@ def get_records(file_path, file_format='fasta'):
     return records
 
 def loadReads(filename, fileformat='fasta'):
-    """Loads DNA data from file
+    """Loads reads of DNA from a file
     Args:
         filename (string): name of the file
         fileformat (string): format of the file
     Returns:
         reads (dict): a dictionary with the DNA reads
     """
-    records = get_records(filename, fileformat)
+    records = getRecords(filename, fileformat)
     records = [list(r) for r in records]
     reads = {}
     for i, r in enumerate(records):
