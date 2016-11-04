@@ -13,19 +13,21 @@ def main():
     (options, args) = parser.parse_args()
     reads = loadReads(filename=options.file_path)
     print '\nDNA file: %s'%options.file_path
-    printConcatReads(reads=reads,threshold=options.threshold)
+    print '\nComplete DNA sequence after concatenation: [%s]'%getCompleteSequence(reads=reads,threshold=options.threshold)
 
-def printConcatReads(reads,threshold=300):
+def getCompleteSequence(reads,threshold=300):
     """Returns the concatenate sequence of DNA reads
     Args:
         threshold (int): number of bases that makes an overlap significant
         reads (dict): a dictionary with the DNA reads
+    Returns:
+        completeSequence (string): the complete seq of concatenated DNA reads
     """
     overlapLengths = getOverlapLengths(reads)
-    
     order = getOrder(getLeftMostID(overlapLengths, threshold=threshold), 
                      overlapLengths, threshold=threshold)
-    print '\nComplete DNA sequence after concatenation: [%s]'%concatReads(order, reads, overlapLengths)
+    completeSequence = concatReads(order, reads, overlapLengths)
+    return completeSequence
 
 def getRecords(file_path, file_format='fasta'):
     """Loads a DNA file
@@ -118,7 +120,7 @@ def getLeftMostID(overlapLengths, threshold=300):
     return leftMost_id
 
 def getOrder(idx, overlapLengths, threshold=300):
-    """Returns the sequence order
+    """Returns the order of the sequence
     Args:
         idx (int): the id of the left most read in the sequence
         overlapLegths (ndarray): length of pairwise overlaps between reads
