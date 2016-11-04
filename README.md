@@ -39,7 +39,7 @@ The program assumes that there are no sequencing errors and that there are no re
     - Recursively finding the read with significant overlap to the right of the subsequent read
  - Stiching all the reads together once the order is known
 
-**significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than few base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set as needed. In the program, the threshold is always the same across reads.
+**significant is (in the program) controlled by a threshold parameter. In general, an overlap larger than a few base pairs could be considered significant since it is very unlikely to happen by chance. However, the threshold can be set as needed. In the program, the threshold is always the same across reads.
 
 Testing the program
 -------------------
