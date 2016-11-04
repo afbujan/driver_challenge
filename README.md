@@ -46,7 +46,7 @@ These are the steps needed to solve the problem:
 
  - Loading the reads and storing them in a dictionary
  - Creating a matrix of overlap lengths, which tells us the length of the overlap between all pairs of reads in both directions
- - Finding the order of the reads in the complete sequence, which involves: (1) finding the left-most read and (2) recursively finding the reads to hte right of the subsequent read
+ - Finding the order of the reads in the complete sequence, which involves: (1) finding the left-most read and (2) recursively finding the reads to the right of the subsequent read
  - Stiching all the reads together
 
 
